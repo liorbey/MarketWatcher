@@ -1,6 +1,5 @@
 import React from "react";
 
-
 class Price extends React.Component {
   state = {
           label: 'BTC-USD',
