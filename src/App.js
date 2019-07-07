@@ -137,6 +137,8 @@ export default function Dashboard() {
             <Grid item xs={12}>
               <Paper className={fixedHeightPaper}>
               {value === 0 &&  <Display/>}
+              {value === 1 &&  <Display/>}
+              {value === 2 &&  <Display/>}
               </Paper>
             </Grid>
           </Grid>
