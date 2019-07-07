@@ -95,7 +95,7 @@ export default function Dashboard() {
           <img src="https://img.pngio.com/m-w-logo-png-images-mw-png-1758_697.png" alt="Market Watch" height="80" width="80" />
           </Typography>
           <Typography>
-            MARKET WATCH
+            CRYPTICmarket
           </Typography>
         </Toolbar>
         <div className={classes.tab}>
@@ -141,6 +141,10 @@ export default function Dashboard() {
             </Grid>
           </Grid>
         </Container>
+        <Typography>
+          powered by newsAPI
+        </Typography>
+
       </main>
     </div>
   );
