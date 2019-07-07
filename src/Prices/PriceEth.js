@@ -1,8 +1,8 @@
 import React from "react";
 
-class Price extends React.Component {
+class PriceEth extends React.Component {
   state = {
-          label: 'BTC-USD',
+          label: 'ETH-USD',
           price: '',
           best_bid: '',
           best_ask: '',
@@ -14,7 +14,7 @@ class Price extends React.Component {
       channels: [
         {
           name: "ticker",
-          product_ids: ["BTC-USD"]
+          product_ids: ["ETH-USD"]
         }
       ]
     };
@@ -47,7 +47,6 @@ class Price extends React.Component {
   }
 
   render() {
-    const { classes } = this.props;
 
     return (
       <div >
@@ -60,4 +59,4 @@ class Price extends React.Component {
   }
 }
 
-export default Price;
+export default PriceEth;
