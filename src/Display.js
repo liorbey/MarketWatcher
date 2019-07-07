@@ -35,10 +35,8 @@ class Display extends Component {
   }
 
   getArticles(url) {
-    const apiKey = process.env.REACT_APP_API_KEY;
-    // Make HTTP reques with Axios
     axios
-      .get('https://newsapi.org/v2/everything?q=Bitcoin&from=2019-07-07&sortBy=popularity&apiKey=08b9f7be5f844af1ac6e5e1635bf1dc5')
+      .get('https://newsapi.org/v2/everything?q=cryptocurrency&from=2019-07-07&sortBy=popularity&apiKey=08b9f7be5f844af1ac6e5e1635bf1dc5')
       .then(res => {
         const articles = res.data.articles;
         // Set state with result

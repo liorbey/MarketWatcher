@@ -17,7 +17,7 @@ class Charts extends React.Component {
         {
           type: "line",
           label: 'BTC-USD',
-          backgroundColor: this.props.theme.palette.background .main,
+          backgroundColor: this.props.theme.palette.background.main,
           borderColor: this.props.theme.palette.primary.main,
           pointBackgroundColor: this.props.theme.palette.secondary.main,
           pointBorderColor: this.props.theme.palette.secondary.main,

@@ -14,23 +14,41 @@ import ChartsLtc from './Charts/ChartsLtc';
 import Price from './Prices/Price';
 import PriceEth from './Prices/PriceEth';
 import PriceLtc from './Prices/PriceLtc';
-import {Bitcoin,Eth,Ltc,Xrp,Eos} from './cryptoList';
+import {Bitcoin,Eth,Ltc} from './cryptoList';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-
+import PropTypes from 'prop-types';
 import Display from './Display';
 
-const drawerWidth = 240;
+function TabContainer(props) {
+  return (
+    <Typography component="div" style={{ padding: 8 * 3 }}>
+      {props.children}
+    </Typography>
+  );
+}
+
+TabContainer.propTypes = {
+  children: PropTypes.node.isRequired,
+};
 
 const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',
+    backgroundColor: '#424242',
+    
+  },
+
+  tab: {
+    backgroundColor: '#ffc400',
+    flexGrow: 1,
+    width: "100%",
+ 
   },
   title: {
-  
     flexGrow: 1,
-    fontStyle: 'italic',
-    
+    fontStyle: 'italic', 
+    align: 'center', 
   },
   appBarSpacer: theme.mixins.toolbar,
   content: {
@@ -57,38 +75,43 @@ const useStyles = makeStyles(theme => ({
 
 export default function Dashboard() {
   const classes = useStyles();
-  const [open, setOpen] = React.useState(true);
-  const handleDrawerOpen = () => {
-    setOpen(true);
-  };
-  const handleDrawerClose = () => {
-    setOpen(false);
-  };
+  
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
 
-  const [valuez, setValuez] = React.useState(0);
+  const [value, setValue] = React.useState(0);
 
   function handleChange(event, newValue) {
-    setValuez(newValue);
+    setValue(newValue);
   }
 
 
   return (
     <div className={classes.root}>
       <CssBaseline />
-      <AppBar color= "primary" position="absolute">
-        <Toolbar className={classes.toolbar}> 
-          <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
+      <AppBar color= "secondary" position="absolute">
+        <Toolbar className={classes.title}> 
+          <Typography>
           <img src="https://img.pngio.com/m-w-logo-png-images-mw-png-1758_697.png" alt="Market Watch" height="80" width="80" />
-          market watch
+          </Typography>
+          <Typography>
+            MARKET WATCH
           </Typography>
         </Toolbar>
-        <Tabs variant="fullWidth" indicatorColor="primary" textColor="background" value={valuez} onChange={handleChange}>
-          <Tab value = "BTC-USD" label="BTC-USD" />
-          <Tab value = "ETH-USD" label="ETH-USD" />
-          <Tab value = "LTC-USD" label="LTC-USD" />
-        </Tabs>
+        <div className={classes.tab}>
+          <Tabs 
+          centered
+          variant="fullWidth"
+          scrollButtons="auto"
+          indicatorColor="primary"
+          position="static" 
+          value={value} 
+          onChange={handleChange}>
+            <Tab label="BTC-USD" />
+            <Tab label="ETH-USD" />
+            <Tab label="LTC-USD" />
+          </Tabs>
+        </div>
       </AppBar>
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
@@ -97,23 +120,23 @@ export default function Dashboard() {
             {/* Chart */}
             <Grid item xs={12} md={8} lg={9}>
               <Paper className={fixedHeightPaper}>
-              {valuez === "BTC-USD" &&  <Charts/>}
-              {valuez === "ETH-USD" &&  <ChartsEth/>}
-              {valuez === "LTC-USD" &&  <ChartsLtc/>}
+              {value === 0 &&  <Charts/>}
+              {value === 1 &&  <ChartsEth/>}
+              {value === 2 &&  <ChartsLtc/>}
               </Paper>
             </Grid>
             {/* Recent Deposits */}
             <Grid item xs={12} md={4} lg={3}>
               <Paper className={fixedHeightPaper}>
-              {valuez === "BTC-USD" &&  <Price/>}
-              {valuez === "ETH-USD" &&  <PriceEth/>}
-              {valuez === "LTC-USD" &&  <PriceLtc/>}
+              {value === 0 &&  <Price/>}
+              {value === 1 &&  <PriceEth/>}
+              {value === 2 &&  <PriceLtc/>}
               </Paper>
             </Grid>
             {/* News */}
             <Grid item xs={12}>
               <Paper className={fixedHeightPaper}>
-              {valuez === "BTC-USD" &&  <Display/>}
+              {value === 0 &&  <Display/>}
               </Paper>
             </Grid>
           </Grid>
