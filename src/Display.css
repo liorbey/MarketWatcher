@@ -4,22 +4,12 @@
 	align-items: center;
 	justify-content: center;
 	flex-wrap: wrap;
-	width: 95%;
+	width: 100%;
 	margin: 0 auto;
 }
 
 .cardsContainer {
 	flex: 1;
-}
-
-.card:nth-child(odd) {
-	border-right: 1px solid grey;
-}
-
-.card:nth-child(even) {
-	border-right: 1px solid white;
-	border-left: 1px solid grey;
-	margin-left: -1px;
 }
 
 .author {
@@ -31,27 +21,26 @@
 
 .content {
 	padding-top: 0;
-	width: 58%;
+	width: 70%;
 	padding: 5px;
 }
 
 .card {
 	display: flex;
 	flex-direction: row;
-	width: 49%;
+	width: 100%;
 	padding: 5px;
 	margin: 10px 0;
-	border-bottom: 1px solid grey;
 }
 
 .image {
 	padding-left: 1rem;
-	width: 40%;
+	width: 60%;
 	margin-bottom: 0;
 }
 
 .cardsContainer img {
-	max-width: 300px;
+	max-width: 700px;
 	width: 100%;
 }
 
@@ -61,7 +50,6 @@
 		flex-direction: column;
 	}
 	.card:nth-child(odd) {
-		border-right: 0;
 	}
 	.card {
 		width: 90%;

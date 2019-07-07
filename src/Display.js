@@ -29,10 +29,8 @@ class Display extends Component {
     var time = new Date(date);
     var year = time.getFullYear();
     var day = time.getDate();
-    var hour = time.getHours();
-    var minute = time.getMinutes();
     var month = time.getMonth() + 1;
-    var composedTime = day + '/' + month + '/' + year + ' | ' + hour + ':' + (minute < 10 ? '0' + minute : minute);
+    var composedTime = day + '/' + month + '/' + year;
     return composedTime;
   }
 
@@ -59,7 +57,7 @@ class Display extends Component {
             <div className="card" key={i}>
               <div className="content">
                 <h3>
-                  <a href={news.url} target="_blank" rel="noopener noreferrer">
+                  <a target="_blank" rel="noopener noreferrer">
                     {news.title}
                   </a>
                 </h3>
@@ -70,9 +68,12 @@ class Display extends Component {
                   </p>
                   <p>{this.formatDate(news.publishedAt)}</p>
                 </div>
+                <div><a href={news.url}>link</a></div>
               </div>
               <div className="image">
-                <img src={news.urlToImage} alt="" />
+                  <a href={news.url} >
+                     <img src={news.urlToImage} alt="" />
+                  </a>
               </div>
             </div>
           );
