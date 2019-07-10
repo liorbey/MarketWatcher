@@ -1,16 +1,25 @@
 import React from "react";
 import { withStyles } from "@material-ui/core/styles";
 import Chart from "./Chart";
+import CircularProgress from '@material-ui/core/CircularProgress';
+
 
 const styles = theme => ({
   "chart-container": {
     height: 500
-  }
+  },
+  progress: {
+    position: 'relative', 
+    left: '50%', 
+    top: '50%',
+
+  },
 });
 
 
 class ChartsEth extends React.Component {
   state = {
+    isLoading: false,
     lineChartData: {
       labels: [],
       datasets: [
@@ -36,12 +45,21 @@ class ChartsEth extends React.Component {
       scales: {
         xAxes: [
           {
+            gridLines: {
+              display:false
+            },
+
             ticks: {
               autoSkip: true,
               maxTicksLimit: 10
             }
           }
-        ]
+        ],
+        yAxes: [{
+          gridLines: {
+              display:false
+          }   
+        }],
       }
     }
   };
@@ -50,6 +68,9 @@ class ChartsEth extends React.Component {
       this.setState({label: 'eth-usd'})
   }
   componentDidMount() {
+    setTimeout(()=>{
+      this.setState({ isLoading: true });
+    },300)
     const subscribe = {
       type: "subscribe",
       channels: [
@@ -83,7 +104,7 @@ class ChartsEth extends React.Component {
           new Date().toLocaleTimeString()
         )
       };
-      this.setState({ lineChartData: newChartData });
+      this.setState({ lineChartData: newChartData, isLoading: false });
     };
   }
 
@@ -93,6 +114,11 @@ class ChartsEth extends React.Component {
 
   render() {
     const { classes } = this.props;
+    const { isLoading } = this.state;
+
+    if (isLoading) {
+      return <CircularProgress className={classes.progress}/>
+    }
 
     return (
       <div className={classes["chart-container"]}>

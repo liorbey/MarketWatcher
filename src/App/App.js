@@ -17,30 +17,18 @@ import PriceLtc from '../Components/Prices/PriceLtc';
 import {Bitcoin,Eth,Ltc} from '../Components/cryptoList';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import PropTypes from 'prop-types';
 import News from '../Components/News/News';
 
-function TabContainer(props) {
-  return (
-    <Typography component="div" style={{ padding: 8 * 3 }}>
-      {props.children}
-    </Typography>
-  );
-}
-
-TabContainer.propTypes = {
-  children: PropTypes.node.isRequired,
-};
 
 const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',
-    backgroundColor: '#424242',
+    backgroundColor: '#2e1534',
     
   },
 
   tab: {
-    backgroundColor: '#ffc400',
+    backgroundColor: 'transparent',
     flexGrow: 1,
     width: "100%",
  
@@ -89,7 +77,7 @@ export default function Dashboard() {
   return (
     <div className={classes.root}>
       <CssBaseline />
-      <AppBar color= "secondary" position="absolute">
+      <AppBar backgroundColor='transparent' position="absolute">
         <Toolbar className={classes.title}> 
           <Typography>
           <img src="https://img.pngio.com/m-w-logo-png-images-mw-png-1758_697.png" alt="Market Watch" height="80" width="80" />
@@ -99,11 +87,11 @@ export default function Dashboard() {
           </Typography>
         </Toolbar>
         <div className={classes.tab}>
-          <Tabs 
+          <Tabs
           centered
           variant="fullWidth"
           scrollButtons="auto"
-          indicatorColor="primary"
+          indicatorColor="secondary"
           position="static" 
           value={value} 
           onChange={handleChange}>
