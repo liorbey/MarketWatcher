@@ -18,7 +18,7 @@ import {Bitcoin,Eth,Ltc} from './cryptoList';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import PropTypes from 'prop-types';
-import Display from './Display';
+import News from './News';
 
 function TabContainer(props) {
   return (
@@ -136,9 +136,9 @@ export default function Dashboard() {
             {/* News */}
             <Grid item xs={12}>
               <Paper className={fixedHeightPaper}>
-              {value === 0 &&  <Display/>}
-              {value === 1 &&  <Display/>}
-              {value === 2 &&  <Display/>}
+              {value === 0 &&  <News/>}
+              {value === 1 &&  <News/>}
+              {value === 2 &&  <News/>}
               </Paper>
             </Grid>
           </Grid>
