@@ -9,11 +9,17 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
+const MyTypography = styled(Typography)({
+  color: '#9E9E9E',
+    
+});
+
 const MyCard = styled(Card)({
   maxWidth: 550,
   margin: 10,
   padding: 10,
-  
+  backgroundColor: '#2e1534',
+    
 });
 const MyCardContent = styled(CardContent)({
   
@@ -76,7 +82,7 @@ class News extends Component {
             <MyCard>
             <CardActionArea key={i}>
             <MyCardContent>
-                <Typography noWrap gutterBottom variant="h5" component="h2">
+                <Typography noWrap color='#9E9E9E' gutterBottom variant="h5" component="h2">
                   {news.title}
                 </Typography>
                 <Typography noWrap paragraph variant="body2" color="textSecondary" component="p">

@@ -24,7 +24,6 @@ const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',
     backgroundColor: '#2e1534',
-    
   },
 
   tab: {
@@ -49,14 +48,15 @@ const useStyles = makeStyles(theme => ({
     paddingBottom: theme.spacing(4),
   },
   paper: {
-    padding: theme.spacing(2),
+    padding: theme.spacing(1),
     display: 'flex',
     overflow: 'auto',
     flexDirection: 'column',
+    backgroundColor: '#212121',
   },
   fixedHeight: {
-    height: 440,
-    marginTop: 50,
+    height: 500,
+    marginTop: 100,
   },
 }));
 
@@ -82,7 +82,7 @@ export default function Dashboard() {
           <Typography>
           <img src="https://img.pngio.com/m-w-logo-png-images-mw-png-1758_697.png" alt="Market Watch" height="80" width="80" />
           </Typography>
-          <Typography>
+          <Typography color="primary.contrastText">
             CRYPTICmarket
           </Typography>
         </Toolbar>
@@ -91,13 +91,12 @@ export default function Dashboard() {
           centered
           variant="fullWidth"
           scrollButtons="auto"
-          indicatorColor="secondary"
           position="static" 
           value={value} 
           onChange={handleChange}>
-            <Tab label="BTC-USD" />
-            <Tab label="ETH-USD" />
-            <Tab label="LTC-USD" />
+            <Tab icon={<Bitcoin/>} label="BTC-USD" />
+            <Tab icon={<Eth/>} label="ETH-USD" />
+            <Tab icon={<Ltc/>} label="LTC-USD" />
           </Tabs>
         </div>
       </AppBar>

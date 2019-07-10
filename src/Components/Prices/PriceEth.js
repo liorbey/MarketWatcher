@@ -1,4 +1,30 @@
 import React from "react";
+import { styled } from '@material-ui/core/styles';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import Typography from '@material-ui/core/Typography';
+import CardMedia from '@material-ui/core/CardMedia';
+
+
+const MyTypography = styled(Typography)({
+  color: '#9E9E9E',
+    
+});
+const MyCard = styled(Card)({
+  maxWidth: 550,
+  margin: 10,
+  padding: 10,
+  height: 470,
+  backgroundColor: '#2e1534',
+    
+});
+const Media = styled(CardMedia)({
+  height: 100,
+  width: 100,
+  marginLeft:'auto',
+  marginRight:'auto',
+  
+});
 
 class PriceEth extends React.Component {
   state = {
@@ -49,12 +75,25 @@ class PriceEth extends React.Component {
   render() {
 
     return (
-      <div >
-          <h1 style= {{textAlign: 'center'}} >{this.state.label}</h1>
-          <h2>Price:{this.state.price}</h2>
-          <h3>Best bid:{this.state.best_bid}</h3>
-          <h3>Best ask:{this.state.best_ask}</h3>
-      </div>
+      <MyCard>
+        <CardContent>
+          <MyTypography gutterBottom variant="h5" component="h2" align='center'>
+          {this.state.label}
+          </MyTypography>
+          <MyTypography paragraph variant="subtitle2" color="secondary.contrastText" component="p">
+            Price:{this.state.price}
+          </MyTypography>
+          <MyTypography paragraph variant="subtitle2" color="textSecondary" component="p">
+            Best bid:{this.state.best_bid}
+          </MyTypography>
+          <MyTypography paragraph variant="subtitle2" color="textSecondary" component="p">
+            Best bid:{this.state.best_bid}
+          </MyTypography>
+        </CardContent>
+        <Media
+          image={require ("./ETH.png")}
+        />
+      </MyCard>
     );
   }
 }
