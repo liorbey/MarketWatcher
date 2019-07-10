@@ -8,17 +8,17 @@ import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
-import Charts from './Charts/Charts';
-import ChartsEth from './Charts/ChartsEth';
-import ChartsLtc from './Charts/ChartsLtc';
-import Price from './Prices/Price';
-import PriceEth from './Prices/PriceEth';
-import PriceLtc from './Prices/PriceLtc';
-import {Bitcoin,Eth,Ltc} from './cryptoList';
+import Charts from '../Components/Charts/Charts';
+import ChartsEth from '../Components/Charts/ChartsEth';
+import ChartsLtc from '../Components/Charts/ChartsLtc';
+import Price from '../Components/Prices/Price';
+import PriceEth from '../Components/Prices/PriceEth';
+import PriceLtc from '../Components/Prices/PriceLtc';
+import {Bitcoin,Eth,Ltc} from '../Components/cryptoList';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import PropTypes from 'prop-types';
-import News from './News';
+import News from '../Components/News/News';
 
 function TabContainer(props) {
   return (
