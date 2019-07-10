@@ -76,6 +76,10 @@ class News extends Component {
 
   render() {
     return (
+      <React.Fragment>
+      <Typography gutterBottom style={{margin:'10px'}} variant="h3">
+        Top Headlines
+      </Typography>
       <div style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'center', }}>
         {this.state.articles.map((news, i) => {
           return (
@@ -112,6 +116,7 @@ class News extends Component {
           );
         })}
       </div>
+      </React.Fragment>
     );
   }
 }
