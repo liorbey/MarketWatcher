@@ -11,10 +11,14 @@ import Paper from '@material-ui/core/Paper';
 import Charts from '../Components/Charts/Charts';
 import ChartsEth from '../Components/Charts/ChartsEth';
 import ChartsLtc from '../Components/Charts/ChartsLtc';
+import ChartsXrp from '../Components/Charts/ChartsXrp';
+import ChartsEos from '../Components/Charts/ChartsEos';
 import Price from '../Components/Prices/Price';
 import PriceEth from '../Components/Prices/PriceEth';
 import PriceLtc from '../Components/Prices/PriceLtc';
-import {Bitcoin,Eth,Ltc} from '../Components/cryptoList';
+import PriceXrp from '../Components/Prices/PriceXrp';
+import PriceEos from '../Components/Prices/PriceEos';
+import {Bitcoin,Eth,Ltc,Xrp,Eos} from '../Components/cryptoList';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import News from '../Components/News/News';
@@ -30,7 +34,8 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: 'transparent',
     flexGrow: 1,
     width: "100%",
- 
+    marginBottom: theme.spacing(1),    
+    
   },
   title: {
     flexGrow: 1,
@@ -88,15 +93,17 @@ export default function Dashboard() {
         </Toolbar>
         <div className={classes.tab}>
           <Tabs
+          scrollButtons="on"
           centered
-          variant="fullWidth"
-          scrollButtons="auto"
+          variant="scrollable"
           position="static" 
           value={value} 
           onChange={handleChange}>
             <Tab icon={<Bitcoin/>} label="BTC-USD" />
             <Tab icon={<Eth/>} label="ETH-USD" />
             <Tab icon={<Ltc/>} label="LTC-USD" />
+            <Tab icon={<Xrp/>} label="XRP-USD" />
+            <Tab icon={<Eos/>} label="EOS-USD" />
           </Tabs>
         </div>
       </AppBar>
@@ -110,6 +117,8 @@ export default function Dashboard() {
               {value === 0 &&  <Charts/>}
               {value === 1 &&  <ChartsEth/>}
               {value === 2 &&  <ChartsLtc/>}
+              {value === 3 &&  <ChartsXrp/>}
+              {value === 4 &&  <ChartsEos/>}
               </Paper>
             </Grid>
             {/* Recent Deposits */}
@@ -118,6 +127,8 @@ export default function Dashboard() {
               {value === 0 &&  <Price/>}
               {value === 1 &&  <PriceEth/>}
               {value === 2 &&  <PriceLtc/>}
+              {value === 3 &&  <PriceXrp/>}
+              {value === 4 &&  <PriceEos/>}
               </Paper>
             </Grid>
             {/* News */}
@@ -126,6 +137,8 @@ export default function Dashboard() {
               {value === 0 &&  <News/>}
               {value === 1 &&  <News/>}
               {value === 2 &&  <News/>}
+              {value === 3 &&  <News/>}
+              {value === 4 &&  <News/>}
               </Paper>
             </Grid>
           </Grid>

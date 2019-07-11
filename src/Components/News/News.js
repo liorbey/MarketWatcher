@@ -107,14 +107,14 @@ class News extends Component {
           <LinkIcon />
           Learn More
           </Fab>
-          <Fab variant="extended" aria-label="Share" color="primary.contrastText">
+          <Fab style={{margin: '20px'}}variant="extended" aria-label="Share" color="primary.contrastText">
           <ShareIcon />
           Share
           </Fab>
-          <Typography>
+          <Typography variant="subtitle4" color="secondary.contrastText" component="p">
                   By {news.author ? news.author : this.props.default}
           </Typography>
-          <Typography>
+          <Typography variant="subtitle4" color="secondary.contrastText" component="p">
                   {this.formatDate(news.publishedAt)}
           </Typography>
         </CardActions>
