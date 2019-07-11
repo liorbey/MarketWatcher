@@ -8,6 +8,10 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import Fab from '@material-ui/core/Fab';
+import ShareIcon from '@material-ui/icons/Share';
+import LinkIcon from '@material-ui/icons/Link';
+
 
 const MyTypography = styled(Typography)({
   color: '#9E9E9E',
@@ -99,12 +103,14 @@ class News extends Component {
               />
               </CardActionArea>
               <CardActions>
-          <Button size="small" color="primary">
-            Share
-          </Button>
-          <Button href={news.url} size="small" color="primary">
-            Learn More
-          </Button>
+          <Fab href={news.url} variant="extended" aria-label="Learn More" color="primary.contrastText">
+          <LinkIcon />
+          Learn More
+          </Fab>
+          <Fab variant="extended" aria-label="Share" color="primary.contrastText">
+          <ShareIcon />
+          Share
+          </Fab>
           <Typography>
                   By {news.author ? news.author : this.props.default}
           </Typography>
