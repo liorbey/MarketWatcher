@@ -7,7 +7,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 
 
 const MyTypography = styled(Typography)({
-  color: '#9E9E9E',
+  color: '#D9B08C',
     
 });
 const MyCard = styled(Card)({
@@ -15,7 +15,7 @@ const MyCard = styled(Card)({
   margin: 10,
   padding: 10,
   height: 470,
-  backgroundColor: '#2e1534',
+  backgroundColor: '#D1E8E2',
     
 });
 const Media = styled(CardMedia)({

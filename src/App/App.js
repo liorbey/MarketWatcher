@@ -1,5 +1,6 @@
 import React from 'react';
 import clsx from 'clsx';
+import Link from '@material-ui/core/Link';
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import AppBar from '@material-ui/core/AppBar';
@@ -22,27 +23,24 @@ import {Bitcoin,Eth,Ltc,Xrp,Eos} from '../Components/cryptoList';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import News from '../Components/News/News';
+import marketwatchlogo from './marketwatchlogo.png';
 
 
 const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',
-    backgroundColor: '#2e1534',
+    backgroundColor: '#166464',
   },
 
   tab: {
-    backgroundColor: 'transparent',
-    flexGrow: 1,
+    flexGrow: 0.5,
     width: "100%",
-    marginBottom: theme.spacing(1),    
+    marginBottom: theme.spacing(1),
     
   },
   title: {
-    flexGrow: 1,
-    fontStyle: 'italic', 
-    align: 'center', 
+    padding: '2px',
   },
-  appBarSpacer: theme.mixins.toolbar,
   content: {
     flexGrow: 1,
     height: '100vh',
@@ -57,12 +55,31 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     overflow: 'auto',
     flexDirection: 'column',
-    backgroundColor: '#212121',
+    backgroundColor: '#FFCB9A',
   },
   fixedHeight: {
     height: 500,
     marginTop: 100,
   },
+  right: {
+    
+  },
+  rightTabs: {
+    fontSize: 8,
+    color: theme.palette.common.white,
+    marginLeft: theme.spacing(3),
+  },
+
+  toolbar: {
+    marginTop: theme.spacing(2),
+    marginBottom: theme.spacing(2),
+    display: 'flex',
+    justifyContent: 'flex-left',
+  },
+  appbar: {
+    backgroundColor: '#2C3531',
+  },
+
 }));
 
 
@@ -82,22 +99,25 @@ export default function Dashboard() {
   return (
     <div className={classes.root}>
       <CssBaseline />
-      <AppBar backgroundColor='transparent' position="absolute">
-        <Toolbar className={classes.title}> 
-          <Typography>
-          <img src="https://img.pngio.com/m-w-logo-png-images-mw-png-1758_697.png" alt="Market Watch" height="80" width="80" />
-          </Typography>
-          <Typography color="primary.contrastText">
-            CRYPTICmarket
-          </Typography>
-        </Toolbar>
-        <div className={classes.tab}>
+      <AppBar className={classes.appbar} position="fixed">
+        <Toolbar className={classes.toolbar}>
+        <Link
+            variant="h6"
+            underline="none"
+            color="inherit"
+            className={classes.title}
+            href="/home"
+          >
+            <img src={marketwatchlogo} alt="Market Watch" />
+          </Link>
+          <div className={classes.right}>
           <Tabs
           scrollButtons="on"
           centered
           variant="scrollable"
           position="static" 
           value={value} 
+          className = {classes.rightTabs}
           onChange={handleChange}>
             <Tab icon={<Bitcoin/>} label="BTC-USD" />
             <Tab icon={<Eth/>} label="ETH-USD" />
@@ -105,7 +125,8 @@ export default function Dashboard() {
             <Tab icon={<Xrp/>} label="XRP-USD" />
             <Tab icon={<Eos/>} label="EOS-USD" />
           </Tabs>
-        </div>
+            </div>
+        </Toolbar>
       </AppBar>
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
@@ -143,7 +164,7 @@ export default function Dashboard() {
             </Grid>
           </Grid>
         </Container>
-        <Typography>
+        <Typography style={{fontSize:'10px'}}>
           powered by newsAPI
         </Typography>
 

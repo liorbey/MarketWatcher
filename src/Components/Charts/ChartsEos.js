@@ -61,7 +61,7 @@ class ChartsEos extends React.Component {
   };
 
   updateChartState(){
-      this.setState({label: 'eos-usd'})
+      this.setState({label: 'EOS-USD'})
   }
   componentDidMount() {
     setTimeout(()=>{
