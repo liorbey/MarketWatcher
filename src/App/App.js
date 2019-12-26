@@ -15,15 +15,12 @@ import ChartsLtc from '../Components/Charts/ChartsLtc';
 import ChartsXrp from '../Components/Charts/ChartsXrp';
 import ChartsEos from '../Components/Charts/ChartsEos';
 import Price from '../Components/Prices/Price';
-import PriceEth from '../Components/Prices/PriceEth';
-import PriceLtc from '../Components/Prices/PriceLtc';
-import PriceXrp from '../Components/Prices/PriceXrp';
-import PriceEos from '../Components/Prices/PriceEos';
 import {Bitcoin,Eth,Ltc,Xrp,Eos} from '../Components/cryptoList';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import News from '../Components/News/News';
 import marketwatchlogo from './marketwatchlogo.png';
+import ChartDisplay from '../Components/Charts/ChartDisplay';
 
 
 const useStyles = makeStyles(theme => ({
@@ -113,7 +110,6 @@ export default function Dashboard() {
           <div className={classes.right}>
           <Tabs
           scrollButtons="on"
-          centered
           variant="scrollable"
           position="static" 
           value={value} 
@@ -145,11 +141,11 @@ export default function Dashboard() {
             {/* Recent Deposits */}
             <Grid item xs={12} md={4} lg={3}>
               <Paper className={fixedHeightPaper}>
-              {value === 0 &&  <Price/>}
-              {value === 1 &&  <PriceEth/>}
-              {value === 2 &&  <PriceLtc/>}
-              {value === 3 &&  <PriceXrp/>}
-              {value === 4 &&  <PriceEos/>}
+              {value === 0 &&  <Price name = {"BTC-USD"}/>}
+              {value === 1 &&  <Price name = {"ETH-USD"}/>}
+              {value === 2 &&  <Price name = {"LTC-USD"}/>}
+              {value === 3 &&  <Price name = {"XRP-USD"}/>}
+              {value === 4 &&  <Price name = {"EOS-USD"}/>}
               </Paper>
             </Grid>
             {/* News */}

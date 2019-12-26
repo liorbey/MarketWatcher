@@ -6,7 +6,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 
 const styles = theme => ({
   "chart-container": {
-    height: 500
+    height: '100%'
   },
   progress: {
     position: 'relative', 
@@ -31,32 +31,6 @@ class ChartsEos extends React.Component {
           data: []
         }
       ]
-    },
-    lineChartOptions: {
-      responsive: true,
-      maintainAspectRatio: false,
-      tooltips: {
-        enabled: true
-      },
-      scales: {
-        xAxes: [
-          {
-            gridLines: {
-              display:false
-            },
-
-            ticks: {
-              autoSkip: true,
-              maxTicksLimit: 10
-            }
-          }
-        ],
-        yAxes: [{
-          gridLines: {
-              display:false
-          }   
-        }],
-      }
     }
   };
 

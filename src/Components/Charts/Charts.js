@@ -1,9 +1,88 @@
-import React from "react";
+import React, {useEffect, useState, useRef} from "react";
 import { withStyles } from "@material-ui/core/styles";
 import Chart from "./Chart";
 import CircularProgress from '@material-ui/core/CircularProgress';
+/*
+const styles = theme => ({
+  "chart-container": {
+    height: 500
+  },
+  progress: {
+    position: 'relative', 
+    left: '50%', 
+    top: '50%',
+
+  },
+});
+
+const Chartz = props =>{
+  
+  const [updateGraph, setUpdateGraph] = useState([]);
+  const [isLoading, setIsLoading] = useState(false)
+
+    
+
+  const socket = useRef(new WebSocket("wss://ws-feed.gdax.com"))
 
 
+
+  const subscribe = {
+    type: "subscribe",
+    channels: [
+      {
+        name: "ticker",
+        product_ids: ["BTC-USD"]
+      }
+    ]
+  };
+  let lineChartData 
+
+  useEffect(()=>{
+    setTimeout(()=>{
+      setIsLoading(true);
+    },300);
+
+    socket.current.onopen = () => {
+      socket.current.send(JSON.stringify(subscribe));
+    };
+    socket.current.onmessage = e => {
+      const value = JSON.parse(e.data);
+     
+      setUpdateGraph([...updateGraph, value.price]);
+
+       lineChartData = {
+        labels: [],
+        datasets: [
+          {
+            type: "line",
+            label: 'BTC-USD',
+            backgroundColor: props.theme.palette.background.main,
+            borderColor: props.theme.palette.primary.main,
+            data: [{updateGraph}]
+          },
+        ]
+      }
+      
+  }
+  },[])
+
+  
+    
+  return(
+
+
+    <div className={props.classes["chart-container"]}>
+        
+    <Chart
+      data={lineChartData}
+    />
+  </div>
+
+  );
+};
+
+
+*/
 const styles = theme => ({
   "chart-container": {
     height: 500
@@ -122,11 +201,10 @@ class Charts extends React.Component {
         
         <Chart
           data={this.state.lineChartData}
-          options={this.state.lineChartOptions}
         />
       </div>
     );
   }
 }
 
-export default withStyles(styles, { withTheme: true })(Charts);
+export default withStyles(styles, { withTheme: true })(Charts)

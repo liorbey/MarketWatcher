@@ -6,7 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import CardMedia from '@material-ui/core/CardMedia';
 
 
-const Price = () =>{
+const Price = props =>{
   const MyTypography = styled(Typography)({
     color: '#D9B08C',
       
@@ -28,23 +28,22 @@ const Price = () =>{
     
   });
 
-  const [currentLabel,setCurrentLabel] = useState("BTC-USD");
   const [currentPrice, setCurrentPrice] = useState();
   const [currentBid,setCurrentBid] = useState();
   const [currentAsk, setCurrentAsk] = useState();
 
   const socket = useRef(new WebSocket("wss://ws-feed.gdax.com"))
-
+  const heartbeat = {
+    type: "subscribe",
+    channels: [
+      {
+        name: "ticker",
+        product_ids: [props.name]
+      }
+    ]
+  };
+  
   useEffect(()=>{
-    const heartbeat = {
-      type: "subscribe",
-      channels: [
-        {
-          name: "ticker",
-          product_ids: ["BTC-USD"]
-        }
-      ]
-    };
     socket.current.onopen = () => {
       socket.current.send(JSON.stringify(heartbeat));
     };
@@ -56,14 +55,19 @@ const Price = () =>{
       setCurrentPrice(value.price);
       setCurrentBid(value.best_bid);
       setCurrentAsk(value.best_ask);
+      return(
+        socket.current.close()
+      )
+      
   }
   })
+
 
   return(
     <MyCard>
     <CardContent>
       <MyTypography gutterBottom variant="h5" component="h2" align='center'>
-      {currentLabel}
+      {props.name}
       </MyTypography>
       <MyTypography paragraph variant="subtitle2" color="secondary.contrastText" component="p">
         Price:{currentPrice}
@@ -76,10 +80,14 @@ const Price = () =>{
       </MyTypography>
     </CardContent>
     <Media
-      image={require ("./BTC.png")}
+      image={require ('./Images/'+ props.name +'.png')}
     />
   </MyCard>
   );
+
+
+}
+export default Price;
 
 /*
 class Price extends React.Component {
@@ -154,5 +162,3 @@ class Price extends React.Component {
   }
 }
 */
-}
-export default Price;
