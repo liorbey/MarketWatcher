@@ -1,31 +1,87 @@
-import React from "react";
+import React, {useState, useEffect, useRef} from "react";
 import { styled } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import CardMedia from '@material-ui/core/CardMedia';
 
-const MyTypography = styled(Typography)({
-  color: '#D9B08C',
-    
-});
-const MyCard = styled(Card)({
-  maxWidth: 550,
-  margin: 10,
-  padding: 10,
-  height: 470,
-  backgroundColor: '#D1E8E2',
-    
-});
 
-const Media = styled(CardMedia)({
-  height: 100,
-  width: 100,
-  marginLeft:'auto',
-  marginRight:'auto',
+const Price = () =>{
+  const MyTypography = styled(Typography)({
+    color: '#D9B08C',
+      
+  });
+  const MyCard = styled(Card)({
+    maxWidth: 550,
+    margin: 10,
+    padding: 10,
+    height: 470,
+    backgroundColor: '#D1E8E2',
+      
+  });
   
-});
+  const Media = styled(CardMedia)({
+    height: 100,
+    width: 100,
+    marginLeft:'auto',
+    marginRight:'auto',
+    
+  });
 
+  const [currentLabel,setCurrentLabel] = useState("BTC-USD");
+  const [currentPrice, setCurrentPrice] = useState();
+  const [currentBid,setCurrentBid] = useState();
+  const [currentAsk, setCurrentAsk] = useState();
+
+  const socket = useRef(new WebSocket("wss://ws-feed.gdax.com"))
+
+  useEffect(()=>{
+    const heartbeat = {
+      type: "subscribe",
+      channels: [
+        {
+          name: "ticker",
+          product_ids: ["BTC-USD"]
+        }
+      ]
+    };
+    socket.current.onopen = () => {
+      socket.current.send(JSON.stringify(heartbeat));
+    };
+    socket.current.onmessage = e => {
+      const value = JSON.parse(e.data);
+      if (value.type !== "ticker") {
+        return;
+      }
+      setCurrentPrice(value.price);
+      setCurrentBid(value.best_bid);
+      setCurrentAsk(value.best_ask);
+  }
+  })
+
+  return(
+    <MyCard>
+    <CardContent>
+      <MyTypography gutterBottom variant="h5" component="h2" align='center'>
+      {currentLabel}
+      </MyTypography>
+      <MyTypography paragraph variant="subtitle2" color="secondary.contrastText" component="p">
+        Price:{currentPrice}
+      </MyTypography>
+      <MyTypography paragraph variant="subtitle2" color="textSecondary" component="p">
+        Best BID:{currentBid}
+      </MyTypography>
+      <MyTypography paragraph variant="subtitle2" color="textSecondary" component="p">
+        Best ASK:{currentAsk}
+      </MyTypography>
+    </CardContent>
+    <Media
+      image={require ("./BTC.png")}
+    />
+  </MyCard>
+  );
+
+/*
 class Price extends React.Component {
   state = {
           label: 'BTC-USD',
@@ -97,5 +153,6 @@ class Price extends React.Component {
     );
   }
 }
-
+*/
+}
 export default Price;
